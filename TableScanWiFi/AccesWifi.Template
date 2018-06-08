@@ -1,0 +1,8 @@
+
+
+const char* ssid_1 = "XXXXXXXXX";      // SSID réseau 1
+const char* password_1 = "YYYYYYYYY"; // Mot de passe WiFI SSID 1
+
+const char* ssid_2     = "XXXXXXX";    // SSID 2
+const char* password_2 = "YYYYYYY";    // YOUR WIFI PASSWORD SSID 2
+

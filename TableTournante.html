@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>TableTournante</title>
+<script type = "text/javascript">
+var iNbPas = 8;
+var dAngle = 0.0;
+var iCurVue = 0;
+var urlOption = 'vide';
+
+
+function Init()
+{
+var i1 = 0, i2 = 0;
+var substr1;
+	
+	urlOption = window.location.search;
+	var searchParams = new URLSearchParams(urlOption);
+	if ( searchParams.has("Angle") )
+	{
+		document.getElementById("CurVue").value = searchParams.get("Vue");
+		document.getElementById("Angle").value = searchParams.get("Angle");
+		document.getElementById("NbPas").value = searchParams.get("NbPas");
+		NbPas = parseInt(document.getElementById("NbPas").value);
+		dAngle = parseFloat(document.getElementById("Angle").value);
+		iCurVue = parseInt(document.getElementById("CurVue").value);
+	}
+}
+	
+function Tourne() 
+{
+	
+	NbPas = document.getElementById("NbPas").value;
+	iCurVue++;
+	document.getElementById("CurVue").value = iCurVue;
+	dAngle += 360.0 / NbPas;
+	if ( dAngle >= 360 ) dAngle -= 360;
+	document.getElementById("Angle").value = dAngle;
+	urlOption = 'TableTournante.html?NbPas=' + NbPas + '&Vue=' + iCurVue + '&Angle=' + dAngle;
+	window.location = urlOption;
+}
+
+</script>
+  </head>
+ <body onload="Init();">
+      <h2> Table tournante scanner 3D </h2>
+      <label>Nombre de vues (360°)</label><input name="NbPas" id="NbPas" value="8" size="2" maxlength="2" type="number" style="width: 40px;"/> 
+		<br>
+		<label>Vue courante</label><input name="CurVue" id="CurVue" value="0" readonly="readonly" style="width: 40px;" />
+		<label>  Angle</label><input name="Angle" id="Angle" value="0" readonly="readonly" style="width: 40px;" />
+		<br>
+      <button  onclick=Tourne(); style="width: 300px; height: 100px; font-size: x-large;">Tourne table</button>
+    <p><br>
+    </p>
+  </body>
+</html>
